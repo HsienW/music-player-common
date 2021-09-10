@@ -2,10 +2,10 @@
   "name": "music-player-common",
   "version": "1.0.0",
   "description": "Common library dedicated to music-player",
-  "main": "index.js",
+  "main": "music-player-common.min.js",
   "scripts": {
     "start": "cross-env webpack-dev-server --watch",
-    "build": "webpack --display-error-details --config=webpack.config.js",
+    "build": "npm run clean && cross-env webpack --config=webpack.config.js",
     "clean": "rimraf dist/*",
     "test": "jest --watchAll --verbose",
     "test-coverage": "jest --watchAll --verbose --coverage"
@@ -28,6 +28,8 @@
     "@babel/core": "7.9.0",
     "@babel/plugin-transform-runtime": "7.9.6",
     "@babel/preset-env": "7.9.5",
+    "babel-loader": "8.1.0",
+    "cache-loader": "4.1.0",
     "cross-env": "7.0.3",
     "css-loader": "3.5.2",
     "file-loader": "6.0.0",

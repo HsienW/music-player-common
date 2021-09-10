@@ -1,57 +1,36 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CompressionPlugin = require('compression-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const Dotenv = require('dotenv-webpack');
-// const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
-const baseWebpackConfig = require('../common/webpack/webpack.config.base');
-const {CleanWebpackPlugin} = require('clean-webpack-plugin');
-const {merge} = require('webpack-merge');
+// const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+// const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const path = require('path');
 
 // const isDev = process.env.NODE_ENV === 'development';
-const packageName = require('./package.json').name;
+// const packageName = require('./package.json').name;
 
-module.exports = merge(baseWebpackConfig, {
+module.exports = {
     mode: 'production',
     output: {
-        library: `${packageName}-[name]_dll`,
+        path: path.resolve(__dirname, './dist'),
+        publicPath: '/dist/',
+        filename: 'music-player-common.min.js',
         libraryTarget: 'umd',
-        jsonpFunction: `webpackJsonp_${packageName}`,
+        umdNamedDefine: true
     },
     module: {
         rules: [
             {
                 test: /\.(jsx|js)?$/,
-                include: [path.resolve(__dirname, 'src')],
+                exclude: /node_modules/,
                 // 跟 plugins 中的設定對應
                 use: ['cache-loader', 'babel-loader',]
             },
             {
                 test: /\.(css|scss)$/,
                 use: [
-                    {loader: MiniCssExtractPlugin.loader},
+                    // {loader: MiniCssExtractPlugin.loader},
                     'css-loader',
                     'postcss-loader',
                     'sass-loader'
                 ]
             },
-            // {
-            //     test: /\.(css|scss)$/,
-            //     use: [
-            //         // 'cache-loader',
-            //         {
-            //             loader: MiniCssExtractPlugin.loader,
-            //             options: {
-            //                 hmr: isDev,
-            //                 reloadAll: true
-            //             }
-            //         },
-            //         'css-loader', {
-            //             loader: 'postcss-loader'
-            //         }, 'sass-loader'
-            //     ],
-            //     include: [path.resolve(__dirname, 'src')]
-            // },
             {
                 test: /\.(png|jpg|gif|jpeg|webp|svg|eot|ttf|woff|woff2)$/,
                 use: [
@@ -63,34 +42,11 @@ module.exports = merge(baseWebpackConfig, {
                             name: '[name]_[hash:6].[ext]'
                         }
                     }
-                ],
-                include: [path.resolve(__dirname, 'src')]
+                ]
             }
         ]
     },
     plugins: [
-        new HtmlWebpackPlugin({
-            template: 'src/index.html',
-            filename: 'index.html'
-        }),
-        new MiniCssExtractPlugin({
-            filename: `${packageName}-[name].css`
-        }),
-        new CompressionPlugin({
-            test: /\.js(\?.*)?$/i
-        }),
-        new Dotenv({
-            path: './.env.config.prod',
-            systemvars: true
-        }),
-        // new HardSourceWebpackPlugin.ExcludeModulePlugin([
-        //     {
-        //         test: /mini-css-extract-plugin[\\/]dist[\\/]loader/,
-        //     },
-        //     {
-        //         test: /dotenv-webpack[\\/]dist[\\/]loader/,
-        //     }
-        // ]),
-        new CleanWebpackPlugin(),
+        // new CleanWebpackPlugin(),
     ]
-});
+};
