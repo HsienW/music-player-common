@@ -1,15 +1,46 @@
 {
   "name": "music-player-common",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.0.1",
+  "description": "Common library dedicated to music-player",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "cross-env webpack-dev-server --watch",
+    "build": "npm run clean && cross-env webpack --config=webpack.config.js --mode=production",
+    "clean": "rimraf dist/*",
+    "test": "jest --watchAll --verbose",
+    "test-coverage": "jest --watchAll --verbose --coverage",
+    "do-publish": "npm run compile && npm publish"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HsienW/music-player-common.git"
+  },
+  "bugs": {
+    "url": "https://github.com/HsienW/music-player-common/issues"
+  },
+  "homepage": "https://github.com/HsienW/music-player-common#readme",
   "author": "Hsien W Wei",
   "license": "ISC",
   "dependencies": {
     "amplitudejs": "5.3.2",
     "spotify-web-api-js": "1.5.1"
+  },
+  "devDependencies": {
+    "@babel/core": "7.9.0",
+    "@babel/plugin-transform-runtime": "7.9.6",
+    "@babel/preset-env": "7.9.5",
+    "babel-loader": "8.1.0",
+    "cache-loader": "4.1.0",
+    "cross-env": "7.0.3",
+    "css-loader": "3.5.2",
+    "file-loader": "6.0.0",
+    "less-loader": "5.0.0",
+    "node-sass": "4.13.1",
+    "postcss-loader": "3.0.0",
+    "sass": "1.34.1",
+    "sass-loader": "8.0.2",
+    "style-loader": "1.1.4",
+    "webpack": "4.42.1",
+    "webpack-cli": "3.3.11"
   }
 }
