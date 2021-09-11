@@ -1,12 +1,12 @@
 // const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 // const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const path = require('path');
-
 // const isDev = process.env.NODE_ENV === 'development';
 // const packageName = require('./package.json').name;
 
 module.exports = {
     mode: 'production',
+    entry: './index.js',
     output: {
         path: path.resolve(__dirname, './dist'),
         publicPath: '/dist/',
