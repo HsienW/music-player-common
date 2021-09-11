@@ -9,7 +9,7 @@
     "clean": "rimraf dist/*",
     "test": "jest --watchAll --verbose",
     "test-coverage": "jest --watchAll --verbose --coverage",
-    "do-publish": "npm run compile && npm publish"
+    "do-publish": "npm run build && npm publish"
   },
   "repository": {
     "type": "git",
