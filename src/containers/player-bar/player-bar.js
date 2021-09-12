@@ -2,6 +2,7 @@ import amplitude from 'amplitudejs';
 import {playerBarStyle} from './player-bar-style';
 import {observer, observerKey} from '../../observer';
 import {formatPlaySongAlbumList, getSongInPlayListIndex} from '../../util';
+import {LoadingSpin} from "../loading-spin/loading-spin";
 
 class PlayerBar extends HTMLElement {
     constructor() {
@@ -283,7 +284,9 @@ class PlayerBar extends HTMLElement {
     }
 }
 
-customElements.define('player-bar-container', PlayerBar);
+if (!customElements.get('loading-spin-container')) {
+    customElements.define('loading-spin-container', PlayerBar);
+}
 
 export {
     PlayerBar

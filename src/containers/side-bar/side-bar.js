@@ -1,6 +1,7 @@
 import {navigationRoute} from '../../util';
 import {observer, observerKey} from '../../observer';
 import {sideBarStyle} from './side-bar-style';
+import {PlayerBar} from "../player-bar/player-bar";
 
 class SideBar extends HTMLElement {
     constructor() {
@@ -76,7 +77,9 @@ class SideBar extends HTMLElement {
     }
 }
 
-customElements.define('side-bar-container', SideBar);
+if (!customElements.get('side-bar-container')) {
+    customElements.define('side-bar-container', SideBar);
+}
 
 export {
     SideBar

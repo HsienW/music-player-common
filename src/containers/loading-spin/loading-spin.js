@@ -1,5 +1,6 @@
 import {loadingSpinStyle} from './loading-spin-style';
 import {observer, observerKey} from '../../observer';
+import {HeaderBar} from "../header-bar/header-bar";
 
 class LoadingSpin extends HTMLElement {
     constructor() {
@@ -47,7 +48,9 @@ class LoadingSpin extends HTMLElement {
     }
 }
 
-customElements.define('loading-spin-container', LoadingSpin);
+if (!customElements.get('loading-spin-container')) {
+    customElements.define('loading-spin-container', LoadingSpin);
+}
 
 export {
     LoadingSpin
