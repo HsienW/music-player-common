@@ -137,7 +137,9 @@ class Auth extends HTMLElement {
     }
 }
 
-customElements.define('auth-container', Auth);
+if (!customElements.get('auth-container')) {
+    customElements.define('auth-container', Auth);
+}
 
 export {
     Auth

@@ -1,5 +1,6 @@
 import {headerBarStyle} from './header-bar-style';
 import {observer, observerKey} from '../../observer';
+import {Auth} from "../auth/auth";
 
 class HeaderBar extends HTMLElement {
     constructor() {
@@ -101,7 +102,9 @@ class HeaderBar extends HTMLElement {
 
 }
 
-customElements.define('header-bar-container', HeaderBar);
+if (!customElements.get('header-bar-container')) {
+    customElements.define('header-bar-container', HeaderBar);
+}
 
 export {
     HeaderBar
