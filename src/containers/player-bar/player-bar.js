@@ -284,8 +284,8 @@ class PlayerBar extends HTMLElement {
     }
 }
 
-if (!customElements.get('loading-spin-container')) {
-    customElements.define('loading-spin-container', PlayerBar);
+if (!customElements.get('player-bar-container')) {
+    customElements.define('player-bar-container', PlayerBar);
 }
 
 export {
