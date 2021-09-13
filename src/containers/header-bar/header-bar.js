@@ -1,6 +1,5 @@
 import {headerBarStyle} from './header-bar-style';
 import {observer, observerKey} from '../../observer';
-import {Auth} from "../auth/auth";
 
 class HeaderBar extends HTMLElement {
     constructor() {

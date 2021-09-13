@@ -2,7 +2,6 @@ import amplitude from 'amplitudejs';
 import {playerBarStyle} from './player-bar-style';
 import {observer, observerKey} from '../../observer';
 import {formatPlaySongAlbumList, getSongInPlayListIndex} from '../../util';
-import {LoadingSpin} from "../loading-spin/loading-spin";
 
 class PlayerBar extends HTMLElement {
     constructor() {

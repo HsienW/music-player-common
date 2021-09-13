@@ -1,4 +1,4 @@
-const singleAppGlobalState = (function () {
+const SingleAppGlobalState = function () {
     let state = {};
 
     const setGlobalState = (key, value) => {
@@ -22,8 +22,11 @@ const singleAppGlobalState = (function () {
         getGlobalState: getGlobalState,
         onStateChange: onStateChange
     };
-})();
+};
+
+const singleAppGlobalState = new SingleAppGlobalState();
 
 export {
     singleAppGlobalState
 }
+
