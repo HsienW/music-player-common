@@ -2,7 +2,7 @@
 
 import {observer, observerKey} from '../observer';
 
-const globalActiveListener = (function () {
+const GlobalActiveListener = function () {
     const operations = {};
 
     operations.initOnloadListener = function () {
@@ -45,7 +45,9 @@ const globalActiveListener = (function () {
         callAction: callAction,
     }
 
-})();
+};
+
+const globalActiveListener = new GlobalActiveListener();
 
 export {
     globalActiveListener

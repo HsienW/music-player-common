@@ -1,6 +1,6 @@
 /** Use decorator (AOP) for the app is running at check **/
 
-const decorator = (function () {
+const Decorator = function () {
     const before = function (target, isHandler) {
         let self = target;
         return function () {
@@ -22,8 +22,11 @@ const decorator = (function () {
         before: before,
         after: after
     }
-})();
+};
+
+const decorator = new Decorator();
 
 export {
     decorator
 };
+

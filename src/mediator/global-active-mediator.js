@@ -3,7 +3,7 @@
 import {observer, observerKey} from '../observer';
 import {navigationRoute} from '../util';
 
-const globalActiveMediator = (function () {
+const GlobalActiveMediator = function () {
     const operations = {};
 
     operations.initGlobalMediatorSubscribe = function () {
@@ -19,6 +19,7 @@ const globalActiveMediator = (function () {
     operations.logout = function () {
         sessionStorage.removeItem('user-info');
         sessionStorage.removeItem('user-token');
+        observer.doPublish(observerKey.player.clearAllPlay);
         navigationRoute('/portal/login');
     }
 
@@ -31,7 +32,9 @@ const globalActiveMediator = (function () {
     return {
         callAction: callAction
     };
-})();
+};
+
+const globalActiveMediator = new GlobalActiveMediator();
 
 export {
     globalActiveMediator
